@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Search and discover the perfect power tools with advanced filtering by brand, price, power source, and ratings. Find expert-reviewed tools with real-time results.">
+    <title>Search Power Tools - Advanced Filters | PowerTool Pro Hub</title>
+    <link rel="stylesheet" href="../css/main.css">
+  
+  <script type="module" async src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fpowertool2930back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.11"></script>
+  <script type="module" defer src="https://static.rocket.new/rocket-shot.js?v=0.0.1"></script>
+  </head>
+<body class="bg-background">
+    <!-- Navigation Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="container-custom">
+            <div class="flex items-center justify-between py-4">
+                <!-- Logo -->
+                <a href="homepage.html" class="flex items-center space-x-3">
+                    <svg class="w-10 h-10" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="40" height="40" rx="8" fill="#2563EB"/>
+                        <path d="M12 20L18 14L24 20L30 14" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M18 14V28M24 20V28" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                        <circle cx="18" cy="14" r="2" fill="#F97316"/>
+                        <circle cx="24" cy="20" r="2" fill="#F97316"/>
+                    </svg>
+                    <div>
+                        <h1 class="text-xl font-bold text-primary">PowerTool Pro Hub</h1>
+                        <p class="text-xs text-text-secondary">Expert Tool Reviews</p>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="homepage.html" class="text-text-secondary hover:text-primary transition-smooth">Home</a>
+                    <a href="product_categories_hub.html" class="text-text-secondary hover:text-primary transition-smooth">Categories</a>
+                    <a href="video_review_center.html" class="text-text-secondary hover:text-primary transition-smooth">Video Reviews</a>
+                    <a href="search_results_filters.html" class="text-primary font-semibold hover:text-primary-700 transition-smooth">Search</a>
+                    <a href="about_expertise.html" class="text-text-secondary hover:text-primary transition-smooth">About</a>
+                </div>
+
+                <!-- Search & CTA -->
+                <div class="flex items-center space-x-4">
+                    <button class="btn-accent text-sm md:text-base">
+                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1255cf8fa-1764656742509.png" alt="Notification bell icon" class="w-5 h-5 mr-2">
+                        Deal Alerts
+                    </button>
+                    <!-- Mobile Menu Button -->
+                    <button class="lg:hidden p-2" id="mobile-menu-btn">
+                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1093c5d5c-1764650234400.png" alt="Mobile menu icon" class="w-6 h-6">
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="hidden lg:hidden pb-4 border-t border-secondary-200 mt-4">
+                <div class="flex flex-col space-y-3 pt-4">
+                    <a href="homepage.html" class="text-text-secondary hover:text-primary py-2">Home</a>
+                    <a href="product_categories_hub.html" class="text-text-secondary hover:text-primary py-2">Categories</a>
+                    <a href="video_review_center.html" class="text-text-secondary hover:text-primary py-2">Video Reviews</a>
+                    <a href="search_results_filters.html" class="text-primary font-semibold py-2">Search</a>
+                    <a href="about_expertise.html" class="text-text-secondary hover:text-primary py-2">About</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Search Hero Section -->
+    <section class="bg-gradient-to-br from-primary to-primary-700 py-12 md:py-16">
+        <div class="container-custom">
+            <div class="max-w-4xl mx-auto text-center mb-8">
+                <h1 class="text-white mb-4">Find Your Perfect Power Tool</h1>
+                <p class="text-xl text-primary-100 mb-8">Search through 500+ expert-reviewed tools with advanced filtering</p>
+                
+                <!-- Advanced Search Bar -->
+                <div class="relative">
+                    <div class="flex flex-col md:flex-row gap-3">
+                        <div class="relative flex-1">
+                            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_194eeb027-1764656322629.png" alt="Search icon" class="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5">
+                            <input type="text" 
+                                   id="search-input"
+                                   placeholder="Search by tool name, brand, or type..." 
+                                   class="input pl-12 pr-4 w-full text-lg"
+                                   value="cordless drill">
+                            <button id="voice-search-btn" class="absolute right-4 top-1/2 transform -translate-y-1/2 p-2 hover:bg-surface rounded-lg transition-smooth">
+                                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_12de92430-1764681919118.png" alt="Voice search icon" class="w-5 h-5">
+                            </button>
+                        </div>
+                        <button class="btn-accent text-lg whitespace-nowrap">
+                            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1fb8d8172-1764831763762.png" alt="Search button icon" class="w-5 h-5 mr-2">
+                            Search Tools
+                        </button>
+                    </div>
+                    
+                    <!-- Search Suggestions Dropdown -->
+                    <div id="search-suggestions" class="hidden absolute top-full left-0 right-0 mt-2 bg-white rounded-lg shadow-xl border border-secondary-200 overflow-hidden z-50">
+                        <div class="p-4 border-b border-secondary-200">
+                            <p class="text-sm font-semibold text-text-secondary mb-2">Popular Searches</p>
+                            <div class="flex flex-wrap gap-2">
+                                <button class="badge bg-surface text-text-primary hover:bg-primary-50 transition-smooth">best cordless drill</button>
+                                <button class="badge bg-surface text-text-primary hover:bg-primary-50 transition-smooth">circular saw reviews</button>
+                                <button class="badge bg-surface text-text-primary hover:bg-primary-50 transition-smooth">impact driver comparison</button>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <p class="text-sm font-semibold text-text-secondary mb-3">Trending Now</p>
+                            <div class="space-y-2">
+                                <a href="javascript:void(0)" class="flex items-center space-x-3 p-2 hover:bg-surface rounded-lg transition-smooth">
+                                    <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1969fd0ee-1765447575973.png" alt="Trending icon" class="w-5 h-5">
+                                    <span class="text-text-primary">DeWalt 20V MAX Drill</span>
+                                </a>
+                                <a href="javascript:void(0)" class="flex items-center space-x-3 p-2 hover:bg-surface rounded-lg transition-smooth">
+                                    <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1969fd0ee-1765447575973.png" alt="Trending icon" class="w-5 h-5">
+                                    <span class="text-text-primary">Milwaukee M18 FUEL</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Filter Chips -->
+            <div class="flex flex-wrap items-center justify-center gap-3">
+                <span class="text-sm text-primary-200">Quick Filters:</span>
+                <button class="badge bg-white/20 text-white hover:bg-white/30 transition-smooth">
+                    <img src="https://img.rocket.new/generatedImages/rocket_gen_img_100ba48a2-1765299953652.png" alt="Star icon" class="w-4 h-4 mr-1">
+                    Top Rated
+                </button>
+                <button class="badge bg-white/20 text-white hover:bg-white/30 transition-smooth">
+                    <img src="https://images.unsplash.com/photo-1662063386711-4ea396cccebf" alt="Sale icon" class="w-4 h-4 mr-1">
+                    On Sale
+                </button>
+                <button class="badge bg-white/20 text-white hover:bg-white/30 transition-smooth">
+                    <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1ad538567-1765443017421.png" alt="New icon" class="w-4 h-4 mr-1">
+                    New Arrivals
+                </button>
+                <button class="badge bg-white/20 text-white hover:bg-white/30 transition-smooth">
+                    <img src="https://img.rocket.new/generatedImages/rocket_gen_img_193931610-1765702725279.png" alt="Battery icon" class="w-4 h-4 mr-1">
+                    Cordless Only
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Search Results Section -->
+    <section class="section">
+        <div class="container-custom">
+            <div class="flex flex-col lg:flex-row gap-8">
+                <!-- Filters Sidebar -->
+                <aside class="lg:w-80 flex-shrink-0">
+                    <div class="card sticky top-24">
+                        <div class="p-6 border-b border-secondary-200">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-xl font-bold text-text-primary">Filters</h3>
+                                <button id="reset-filters" class="text-sm text-primary hover:text-primary-700 font-semibold transition-smooth">
+                                    <img src="https://img.rocket.new/generatedImages/rocket_gen_img_148148b2b-1765208784425.png" alt="Reset icon" class="w-4 h-4 inline mr-1">
+                                    Reset All
+                                </button>
+                            </div>
+                            <p class="text-sm text-text-secondary">Refine your search results</p>
+                        </div>
+
+                        <div class="p-6 space-y-6 max-h-[calc(100vh-300px)] overflow-y-auto scrollbar-thin">
+                            <!-- Category Filter -->
+                            <div class="filter-group">
+                                <h4 class="font-semibold text-text-primary mb-3 flex items-center">
+                                    <img src="https://img.rocket.new/generatedImages/rocket_gen_img_15d9e7448-1764657835987.png" alt="Category icon" class="w-5 h-5 mr-2">
+                                    Category
+                                </h4>
+                                <div class="space-y-2">
+                                    <label class="flex items-center space-x-3 cursor-pointer group">
+                                        <input type="checkbox" class="w-4 h-4 text-primary border-secondary-300 rounded focus:ring-primary" checked>
+                                        <span class="text-text-secondary group-hover:text-primary transition-smooth">Drills (45)</span>
+                                    </label>
+                                    <label class="flex items-center space-x-3 cursor-pointer group">
+                                        <input type="checkbox" class="w-4 h-4 text-primary border-secondary-300 rounded focus:ring-primary">
+                                        <span class="text-text-secondary group-hover:text-primary transition-smooth">Saws (32)</span>
+                                    </label>
+                                    <label class="flex items-center space-x-3 cursor-pointer group">
+                                        <input type="checkbox" class="w-4 h-4 text-primary border-secondary-300 rounded focus:ring-primary">
+                                        <span class="text-text-secondary group-hover:text-primary transition-smooth">Sanders (18)</span>
+                                    </label>
+                                    <label class="flex items-center space-x-3 cursor-pointer group">
+                                        <input type="checkbox" class="w-4 h-4 text-primary border-secondary-300 rounded focus:ring-primary">
+                                        <span class="text-text-secondary group-hover:text-primary transition-smooth">Grinders (24)</span>
+                                    </label>
+                                    <label class="flex items-center space-x-3 cursor-pointer group">
+                                        <input type="checkbox" class="w-4 h-4 text-primary border-secondary-300 rounded focus:ring-primary">
+                                        <span class="text-text-secondary group-hover:text-primary transition-smooth">Impact Drivers (28)</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Brand Filter -->
+                            <div class="filter-group pt-6 border-t border-secondary-200">
+                                <h4 class="font-semibold text-text-primary mb-3 flex items-center">
+                                    <img src="https://img.rocket.new/generatedImages/rocket_gen_img_161a009c5-1765617600496.png" alt="Brand icon" class="w-5 h-5 mr-2">
+                                    Brand
+                                </h4>
+                                <div class="space-y-2">
+                                    <label class="flex items-center space-x-3 cursor-pointer group">
+                                        <input type="checkbox" class="w-4 h-4 text-primary border-secondary-300 rounded focus:ring-primary">
+                                        <span class="text-text-secondary group-hover:text-primary transition-smooth">DeWalt (38)</span>
+                                    </label>
+                                    <label class="flex items-center space-x-3 cursor-pointer group">
+                                        <input type="checkbox" class="w-4 h-4 text-primary border-secondary-300 rounded focus:ring-primary">
+                                        <span class="text-text-secondary group-hover:text-primary transition-smooth">Milwaukee (42)</span>
+                                    </label>
+                                    <label class="flex items-center space-x-3 cursor-pointer group">
+                                        <input type="checkbox" class="w-4 h-4 text-primary border-secondary-300 rounded focus:ring-primary">
+                                        <span class="text-text-secondary group-hover:text-primary transition-smooth">Makita (35)</span>
+                                    </label>
+                                    <label class="flex items-center space-x-3 cursor-pointer group">
+                                        <input type="checkbox" class="w-4 h-4 text-primary border-secondary-300 rounded focus:ring-primary">
+                                        <span class="text-text-secondary group-hover:text-primary transition-smooth">Bosch (29)</span>
+                                    </label>
+                                    <label class="flex items-center space-x-3 cursor-pointer group">
+                                        <input type="checkbox" class="w-4 h-4 text-primary border-secondary-300 rounded focus:ring-primary">
+                                        <span class="text-text-secondary group-hover:text-primary transition-smooth">Ryobi (24)</span>
+                                    </label>
+                                    <button class="text-sm text-primary hover:text-primary-700 font-semibold mt-2">
+                                        Show More Brands
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Price Range Filter -->
+                            <div class="filter-group pt-6 border-t border-secondary-200">
+                                <h4 class="font-semibold text-text-primary mb-3 flex items-center">
+                                    <img src="https://img.rocket.new/generatedImages/rocket_gen_img_17c2c4c98-1764683448588.png" alt="Price icon" class="w-5 h-5 mr-2">
+                                    Price Range (MYR)
+                                </h4>
+                                <div class="space-y-4">
+                                    <div class="flex items-center space-x-4">
+                                        <input type="number" placeholder="Min" class="input text-sm" value="0">
+                                        <span class="text-text-secondary">-</span>
+                                        <input type="number" placeholder="Max" class="input text-sm" value="1000">
+                                    </div>
+                                    <input type="range" min="0" max="2000" value="1000" class="w-full h-2 bg-secondary-200 rounded-lg appearance-none cursor-pointer accent-primary">
+                                    <div class="flex justify-between text-xs text-text-secondary">
+                                        <span>RM 0</span>
+                                        <span>RM 2,000+</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Power Source Filter -->
+                            <div class="filter-group pt-6 border-t border-secondary-200">
+                                <h4 class="font-semibold text-text-primary mb-3 flex items-center">
+                                    <img src="https://img.rocket.new/generatedImages/rocket_gen_img_111c93c25-1765012456985.png" alt="Power source icon" class="w-5 h-5 mr-2">
+                                    Power Source
+                                </h4>
+                                <div class="space-y-2">
+                                    <label class="flex items-center space-x-3 cursor-pointer group">
+                                        <input type="checkbox" class="w-4 h-4 text-primary border-secondary-300 rounded focus:ring-primary" checked>
+                                        <span class="text-text-secondary group-hover:text-primary transition-smooth">Cordless (89)</span>
+                                    </label>
+                                    <label class="flex items-center space-x-3 cursor-pointer group">
+                                        <input type="checkbox" class="w-4 h-4 text-primary border-secondary-300 rounded focus:ring-primary">
+                                        <span class="text-text-secondary group-hover:text-primary transition-smooth">Corded (58)</span>
+                                    </label>
+                                    <label class="flex items-center space-x-3 cursor-pointer group">
+                                        <input type="checkbox" class="w-4 h-4 text-primary border-secondary-300 rounded focus:ring-primary">
+                                        <span class="text-text-secondary group-hover:text-primary transition-smooth">Pneumatic (12)</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Rating Filter -->
+                            <div class="filter-group pt-6 border-t border-secondary-200">
+                                <h4 class="font-semibold text-text-primary mb-3 flex items-center">
+                                    <img src="https://img.rocket.new/generatedImages/rocket_gen_img_15133dc64-1764668665882.png" alt="Rating icon" class="w-5 h-5 mr-2">
+                                    Minimum Rating
+                                </h4>
+                                <div class="space-y-2">
+                                    <label class="flex items-center space-x-3 cursor-pointer group">
+                                        <input type="radio" name="rating" class="w-4 h-4 text-primary border-secondary-300 focus:ring-primary">
+                                        <div class="flex items-center space-x-1">
+                                            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1e466b790-1764675883337.png" alt="Star rating icon" class="w-4 h-4">
+                                            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1e466b790-1764675883337.png" alt="Star rating icon" class="w-4 h-4">
+                                            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1e466b790-1764675883337.png" alt="Star rating icon" class="w-4 h-4">
+                                            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1e466b790-1764675883337.png" alt="Star rating icon" class="w-4 h-4">
+                                            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1e466b790-1764675883337.png" alt="Star rating icon" class="w-4 h-4">
+                                            <span class="text-sm text-text-secondary ml-2">& Up (23)</span>
+                                        </div>
+                                    </label>
+                                    <label class="flex items-center space-x-3 cursor-pointer group">
+                                        <input type="radio" name="rating" class="w-4 h-4 text-primary border-secondary-300 focus:ring-primary" checked>
+                                        <div class="flex items-center space-x-1">
+                                            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1e466b790-1764675883337.png" alt="Star rating icon" class="w-4 h-4">
+                                            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1e466b790-1764675883337.png" alt="Star rating icon" class="w-4 h-4">
+                                            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1e466b790-1764675883337.png" alt="Star rating icon" class="w-4 h-4">
+                                            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1e466b790-1764675883337.png" alt="Star rating icon" class="w-4 h-4">
+                                            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1601e29af-1764662775663.png" alt="Empty star icon" class="w-4 h-4">
+                                            <span class="text-sm text-text-secondary ml-2">& Up (67)</span>
+                                        </div>
+                                    </label>
+                                    <label class="flex items-center space-x-3 cursor-pointer group">
+                                        <input type="radio" name="rating" class="w-4 h-4 text-primary border-secondary-300 focus:ring-primary">
+                                        <div class="flex items-center space-x-1">
+                                            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1e466b790-1764675883337.png" alt="Star rating icon" class="w-4 h-4">
+                                            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1e466b790-1764675883337.png" alt="Star rating icon" class="w-4 h-4">
+                                            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1e466b790-1764675883337.png" alt="Star rating icon" class="w-4 h-4">
+                                            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1601e29af-1764662775663.png" alt="Empty star icon" class="w-4 h-4">
+                                            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1601e29af-1764662775663.png" alt="Empty star icon" class="w-4 h-4">
+                                            <span class="text-sm text-text-secondary ml-2">& Up (124)</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Availability Filter -->
+                            <div class="filter-group pt-6 border-t border-secondary-200">
+                                <h4 class="font-semibold text-text-primary mb-3 flex items-center">
+                                    <img src="https://img.rocket.new/generatedImages/rocket_gen_img_113ec20fb-1764840848003.png" alt="Availability icon" class="w-5 h-5 mr-2">
+                                    Availability
+                                </h4>
+                                <div class="space-y-2">
+                                    <label class="flex items-center space-x-3 cursor-pointer group">
+                                        <input type="checkbox" class="w-4 h-4 text-primary border-secondary-300 rounded focus:ring-primary">
+                                        <span class="text-text-secondary group-hover:text-primary transition-smooth">In Stock (142)</span>
+                                    </label>
+                                    <label class="flex items-center space-x-3 cursor-pointer group">
+                                        <input type="checkbox" class="w-4 h-4 text-primary border-secondary-300 rounded focus:ring-primary">
+                                        <span class="text-text-secondary group-hover:text-primary transition-smooth">On Sale (38)</span>
+                                    </label>
+                                    <label class="flex items-center space-x-3 cursor-pointer group">
+                                        <input type="checkbox" class="w-4 h-4 text-primary border-secondary-300 rounded focus:ring-primary">
+                                        <span class="text-text-secondary group-hover:text-primary transition-smooth">Free Shipping (89)</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Save Search Button -->
+                            <div class="pt-6 border-t border-secondary-200">
+                                <button class="btn-primary w-full">
+                                    <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1a4318dc1-1764878671274.png" alt="Save icon" class="w-5 h-5 mr-2">
+                                    Save This Search
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Search Results Main Content -->
+                <main class="flex-1">
+                    <!-- Results Header -->
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                        <div>
+                            <h2 class="text-2xl font-bold text-text-primary mb-1">Search Results for "cordless drill"</h2>
+                            <p class="text-text-secondary">Showing 45 results</p>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <!-- View Toggle -->
+                            <div class="flex items-center space-x-2 bg-surface rounded-lg p-1">
+                                <button id="grid-view" class="p-2 rounded bg-white shadow-sm">
+                                    <img src="https://img.rocket.new/generatedImages/rocket_gen_img_10ed34ac5-1764666316858.png" alt="Grid view icon" class="w-5 h-5">
+                                </button>
+                                <button id="list-view" class="p-2 rounded hover:bg-white transition-smooth">
+                                    <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1eeec446e-1764987399904.png" alt="List view icon" class="w-5 h-5">
+                                </button>
+                            </div>
+
+                            <!-- Sort Dropdown -->
+                            <select class="input text-sm py-2 pr-10">
+                                <option>Sort by: Relevance</option>
+                                <option>Price: Low to High</option>
+                                <option>Price: High to Low</option>
+                                <option>Rating: High to Low</option>
+                                <option>Newest Reviews</option>
+                                <option>Most Popular</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Active Filters -->
+                    <div class="flex flex-wrap items-center gap-2 mb-6 p-4 bg-surface rounded-lg">
+                        <span class="text-sm font-semibold text-text-secondary">Active Filters:</span>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="badge bg-primary-100 text-primary-700">
+                                Drills
+                                <button class="ml-2 hover:text-primary-900">
+                                    <img src="https://img.rocket.new/generatedImages/rocket_gen_img_115e7441e-1764657450428.png" alt="Remove filter icon" class="w-4 h-4">
+                                </button>
+                            </span>
+                            <span class="badge bg-primary-100 text-primary-700">
+                                Cordless
+                                <button class="ml-2 hover:text-primary-900">
+                                    <img src="https://img.rocket.new/generatedImages/rocket_gen_img_115e7441e-1764657450428.png" alt="Remove filter icon" class="w-4 h-4">
+                                </button>
+                            </span>
+                            <span class="badge bg-primary-100 text-primary-700">
+                                4+ Stars
+                                <button class="ml-2 hover:text-primary-900">
+                                    <img src="https://img.rocket.new/generatedImages/rocket_gen_img_115e7441e-1764657450428.png" alt="Remove filter icon" class="w-4 h-4">
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Product Grid -->
+                    <div id="product-grid" class="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+                        <!-- Product Card 1 -->
+                        <article class="card-product group">
+                            <div class="relative overflow-hidden aspect-square">
+                                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1b89b8812-1764769533030.png" 
+                                     alt="DeWalt 20V MAX cordless drill with battery pack and charger on workbench" 
+                                     class="w-full h-full object-cover group-hover:scale-105 transition-smooth"
+                                     loading="lazy"
+                                     onerror="this.src='https://images.unsplash.com/photo-1504148455328-c376907d081c?q=80&w=600'; this.onerror=null;">
+                                <div class="absolute top-4 right-4 flex flex-col gap-2">
+                                    <button class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-accent hover:scale-110 transition-smooth">
+                                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1e05d092f-1764668667149.png" alt="Add to wishlist icon" class="w-5 h-5">
+                                    </button>
+                                    <button class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-primary hover:scale-110 transition-smooth">
+                                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1f5242011-1764656740211.png" alt="Compare icon" class="w-5 h-5">
+                                    </button>
+                                </div>
+                                <div class="absolute top-4 left-4">
+                                    <span class="badge-primary">Editor's Choice</span>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <span class="text-xs font-semibold text-primary">DEWALT</span>
+                                    <div class="flex items-center space-x-1">
+                                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1e466b790-1764675883337.png" alt="Star rating icon" class="w-4 h-4">
+                                        <span class="text-xs font-semibold">4.8</span>
+                                        <span class="text-xs text-text-secondary">(342)</span>
+                                    </div>
+                                </div>
+                                <h3 class="font-bold text-text-primary mb-2 line-clamp-2 group-hover:text-primary transition-smooth">
+                                    <a href="individual_product_review_pages.html">DeWalt 20V MAX Cordless Drill Driver Kit</a>
+                                </h3>
+                                <p class="text-sm text-text-secondary mb-3 line-clamp-2">Professional-grade cordless drill with brushless motor and 2-speed transmission for versatile applications.</p>
+                                <div class="flex items-baseline space-x-2 mb-3">
+                                    <span class="text-2xl font-bold text-primary">RM 389</span>
+                                    <span class="text-sm text-text-secondary line-through">RM 519</span>
+                                    <span class="badge bg-error-100 text-error-700 text-xs">-25%</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <a href="individual_product_review_pages.html" class="btn-outline flex-1 text-sm py-2">
+                                        View Review
+                                    </a>
+                                    <a href="javascript:void(0)" class="btn-accent flex-1 text-sm py-2">
+                                        Buy on Shopee
+                                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1bdd2c5ad-1765311343916.png" alt="External link icon" class="w-4 h-4 ml-1">
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Product Card 2 -->
+                        <article class="card-product group">
+                            <div class="relative overflow-hidden aspect-square">
+                                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1b16b8eeb-1764797809939.png" 
+                                     alt="Milwaukee M18 FUEL cordless drill with LED work light feature" 
+                                     class="w-full h-full object-cover group-hover:scale-105 transition-smooth"
+                                     loading="lazy"
+                                     onerror="this.src='https://images.pexels.com/photos/1249611/pexels-photo-1249611.jpeg?auto=compress&cs=tinysrgb&w=600'; this.onerror=null;">
+                                <div class="absolute top-4 right-4 flex flex-col gap-2">
+                                    <button class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-accent hover:scale-110 transition-smooth">
+                                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1e05d092f-1764668667149.png" alt="Add to wishlist icon" class="w-5 h-5">
+                                    </button>
+                                    <button class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-primary hover:scale-110 transition-smooth">
+                                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1f5242011-1764656740211.png" alt="Compare icon" class="w-5 h-5">
+                                    </button>
+                                </div>
+                                <div class="absolute top-4 left-4">
+                                    <span class="badge-success">Best Value</span>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <span class="text-xs font-semibold text-primary">MILWAUKEE</span>
+                                    <div class="flex items-center space-x-1">
+                                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1e466b790-1764675883337.png" alt="Star rating icon" class="w-4 h-4">
+                                        <span class="text-xs font-semibold">4.9</span>
+                                        <span class="text-xs text-text-secondary">(567)</span>
+                                    </div>
+                                </div>
+                                <h3 class="font-bold text-text-primary mb-2 line-clamp-2 group-hover:text-primary transition-smooth">
+                                    <a href="individual_product_review_pages.html">Milwaukee M18 FUEL Hammer Drill</a>
+                                </h3>
+                                <p class="text-sm text-text-secondary mb-3 line-clamp-2">Powerful brushless motor with REDLINK PLUS intelligence for maximum performance and protection.</p>
+                                <div class="flex items-baseline space-x-2 mb-3">
+                                    <span class="text-2xl font-bold text-primary">RM 459</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <a href="individual_product_review_pages.html" class="btn-outline flex-1 text-sm py-2">
+                                        View Review
+                                    </a>
+                                    <a href="javascript:void(0)" class="btn-accent flex-1 text-sm py-2">
+                                        Buy on Shopee
+                                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1bdd2c5ad-1765311343916.png" alt="External link icon" class="w-4 h-4 ml-1">
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Product Card 3 -->
+                        <article class="card-product group">
+                            <div class="relative overflow-hidden aspect-square">
+                                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_155ca7133-1765702727005.png" 
+                                     alt="Makita 18V LXT cordless drill with dual battery system" 
+                                     class="w-full h-full object-cover group-hover:scale-105 transition-smooth"
+                                     loading="lazy"
+                                     onerror="this.src='https://images.pixabay.com/photo/2017/08/10/07/32/circular-saw-2619773_1280.jpg'; this.onerror=null;">
+                                <div class="absolute top-4 right-4 flex flex-col gap-2">
+                                    <button class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-accent hover:scale-110 transition-smooth">
+                                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1e05d092f-1764668667149.png" alt="Add to wishlist icon" class="w-5 h-5">
+                                    </button>
+                                    <button class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-primary hover:scale-110 transition-smooth">
+                                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1f5242011-1764656740211.png" alt="Compare icon" class="w-5 h-5">
+                                    </button>
+                                </div>
+                                <div class="absolute top-4 left-4">
+                                    <span class="badge bg-warning-100 text-warning-700">Trending</span>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <span class="text-xs font-semibold text-primary">MAKITA</span>
+                                    <div class="flex items-center space-x-1">
+                                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1e466b790-1764675883337.png" alt="Star rating icon" class="w-4 h-4">
+                                        <span class="text-xs font-semibold">4.7</span>
+                                        <span class="text-xs text-text-secondary">(423)</span>
+                                    </div>
+                                </div>
+                                <h3 class="font-bold text-text-primary mb-2 line-clamp-2 group-hover:text-primary transition-smooth">
+                                    <a href="individual_product_review_pages.html">Makita 18V LXT Brushless Drill</a>
+                                </h3>
+                                <p class="text-sm text-text-secondary mb-3 line-clamp-2">Compact and lightweight design with efficient brushless motor for extended runtime and durability.</p>
+                                <div class="flex items-baseline space-x-2 mb-3">
+                                    <span class="text-2xl font-bold text-primary">RM 419</span>
+                                    <span class="text-sm text-text-secondary line-through">RM 499</span>
+                                    <span class="badge bg-error-100 text-error-700 text-xs">-16%</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <a href="individual_product_review_pages.html" class="btn-outline flex-1 text-sm py-2">
+                                        View Review
+                                    </a>
+                                    <a href="javascript:void(0)" class="btn-accent flex-1 text-sm py-2">
+                                        Buy on Shopee
+                                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1bdd2c5ad-1765311343916.png" alt="External link icon" class="w-4 h-4 ml-1">
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Product Card 4 -->
+                        <article class="card-product group">
+                            <div class="relative overflow-hidden aspect-square">
+                                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1b9f61183-1764769534250.png" 
+                                     alt="Bosch 18V cordless drill with ergonomic grip design" 
+                                     class="w-full h-full object-cover group-hover:scale-105 transition-smooth"
+                                     loading="lazy"
+                                     onerror="this.src='https://images.unsplash.com/photo-1504148455328-c376907d081c?q=80&w=600'; this.onerror=null;">
+                                <div class="absolute top-4 right-4 flex flex-col gap-2">
+                                    <button class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-accent hover:scale-110 transition-smooth">
+                                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1e05d092f-1764668667149.png" alt="Add to wishlist icon" class="w-5 h-5">
+                                    </button>
+                                    <button class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-primary hover:scale-110 transition-smooth">
+                                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1f5242011-1764656740211.png" alt="Compare icon" class="w-5 h-5">
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <span class="text-xs font-semibold text-primary">BOSCH</span>
+                                    <div class="flex items-center space-x-1">
+                                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1e466b790-1764675883337.png" alt="Star rating icon" class="w-4 h-4">
+                                        <span class="text-xs font-semibold">4.6</span>
+                                        <span class="text-xs text-text-secondary">(289)</span>
+                                    </div>
+                                </div>
+                                <h3 class="font-bold text-text-primary mb-2 line-clamp-2 group-hover:text-primary transition-smooth">
+                                    <a href="individual_product_review_pages.html">Bosch 18V Compact Drill Driver</a>
+                                </h3>
+                                <p class="text-sm text-text-secondary mb-3 line-clamp-2">Lightweight and compact design perfect for tight spaces with impressive power-to-weight ratio.</p>
+                                <div class="flex items-baseline space-x-2 mb-3">
+                                    <span class="text-2xl font-bold text-primary">RM 349</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <a href="individual_product_review_pages.html" class="btn-outline flex-1 text-sm py-2">
+                                        View Review
+                                    </a>
+                                    <a href="javascript:void(0)" class="btn-accent flex-1 text-sm py-2">
+                                        Buy on Shopee
+                                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1bdd2c5ad-1765311343916.png" alt="External link icon" class="w-4 h-4 ml-1">
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Product Card 5 -->
+                        <article class="card-product group">
+                            <div class="relative overflow-hidden aspect-square">
+                                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1eb65fd9f-1765702726186.png" 
+                                     alt="Ryobi ONE+ cordless drill with multiple speed settings" 
+                                     class="w-full h-full object-cover group-hover:scale-105 transition-smooth"
+                                     loading="lazy"
+                                     onerror="this.src='https://images.pexels.com/photos/1249611/pexels-photo-1249611.jpeg?auto=compress&cs=tinysrgb&w=600'; this.onerror=null;">
+                                <div class="absolute top-4 right-4 flex flex-col gap-2">
+                                    <button class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-accent hover:scale-110 transition-smooth">
+                                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1e05d092f-1764668667149.png" alt="Add to wishlist icon" class="w-5 h-5">
+                                    </button>
+                                    <button class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-primary hover:scale-110 transition-smooth">
+                                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1f5242011-1764656740211.png" alt="Compare icon" class="w-5 h-5">
+                                    </button>
+                                </div>
+                                <div class="absolute top-4 left-4">
+                                    <span class="badge bg-error-100 text-error-700">-20%</span>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <span class="text-xs font-semibold text-primary">RYOBI</span>
+                                    <div class="flex items-center space-x-1">
+                                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1e466b790-1764675883337.png" alt="Star rating icon" class="w-4 h-4">
+                                        <span class="text-xs font-semibold">4.5</span>
+                                        <span class="text-xs text-text-secondary">(198)</span>
+                                    </div>
+                                </div>
+                                <h3 class="font-bold text-text-primary mb-2 line-clamp-2 group-hover:text-primary transition-smooth">
+                                    <a href="individual_product_review_pages.html">Ryobi 18V ONE+ Drill Driver</a>
+                                </h3>
+                                <p class="text-sm text-text-secondary mb-3 line-clamp-2">Versatile drill driver compatible with 100+ ONE+ tools, offering excellent value for money.</p>
+                                <div class="flex items-baseline space-x-2 mb-3">
+                                    <span class="text-2xl font-bold text-primary">RM 239</span>
+                                    <span class="text-sm text-text-secondary line-through">RM 299</span>
+                                    <span class="badge bg-error-100 text-error-700 text-xs">-20%</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <a href="individual_product_review_pages.html" class="btn-outline flex-1 text-sm py-2">
+                                        View Review
+                                    </a>
+                                    <a href="javascript:void(0)" class="btn-accent flex-1 text-sm py-2">
+                                        Buy on Shopee
+                                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1bdd2c5ad-1765311343916.png" alt="External link icon" class="w-4 h-4 ml-1">
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Product Card 6 -->
+                        <article class="card-product group">
+                            <div class="relative overflow-hidden aspect-square">
+                                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1a93afd81-1764776514456.png" 
+                                     alt="Black and Decker cordless drill with LED work light" 
+                                     class="w-full h-full object-cover group-hover:scale-105 transition-smooth"
+                                     loading="lazy"
+                                     onerror="this.src='https://images.pixabay.com/photo/2017/08/10/07/32/circular-saw-2619773_1280.jpg'; this.onerror=null;">
+                                <div class="absolute top-4 right-4 flex flex-col gap-2">
+                                    <button class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-accent hover:scale-110 transition-smooth">
+                                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1e05d092f-1764668667149.png" alt="Add to wishlist icon" class="w-5 h-5">
+                                    </button>
+                                    <button class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-primary hover:scale-110 transition-smooth">
+                                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1f5242011-1764656740211.png" alt="Compare icon" class="w-5 h-5">
+                                    </button>
+                                </div>
+                                <div class="absolute top-4 left-4">
+                                    <span class="badge bg-success-100 text-success-700">Budget Pick</span>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <span class="text-xs font-semibold text-primary">BLACK+DECKER</span>
+                                    <div class="flex items-center space-x-1">
+                                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1e466b790-1764675883337.png" alt="Star rating icon" class="w-4 h-4">
+                                        <span class="text-xs font-semibold">4.3</span>
+                                        <span class="text-xs text-text-secondary">(156)</span>
+                                    </div>
+                                </div>
+                                <h3 class="font-bold text-text-primary mb-2 line-clamp-2 group-hover:text-primary transition-smooth">
+                                    <a href="individual_product_review_pages.html">Black+Decker 20V MAX Drill</a>
+                                </h3>
+                                <p class="text-sm text-text-secondary mb-3 line-clamp-2">Affordable and reliable cordless drill perfect for DIY enthusiasts and home improvement projects.</p>
+                                <div class="flex items-baseline space-x-2 mb-3">
+                                    <span class="text-2xl font-bold text-primary">RM 189</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <a href="individual_product_review_pages.html" class="btn-outline flex-1 text-sm py-2">
+                                        View Review
+                                    </a>
+                                    <a href="javascript:void(0)" class="btn-accent flex-1 text-sm py-2">
+                                        Buy on Shopee
+                                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1bdd2c5ad-1765311343916.png" alt="External link icon" class="w-4 h-4 ml-1">
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="flex items-center justify-center space-x-2 mt-12">
+                        <button class="p-2 rounded-lg border border-secondary-300 hover:bg-surface transition-smooth disabled:opacity-50" disabled>
+                            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1e92cb971-1764634747608.png" alt="Previous page icon" class="w-5 h-5">
+                        </button>
+                        <button class="px-4 py-2 rounded-lg bg-primary text-white font-semibold">1</button>
+                        <button class="px-4 py-2 rounded-lg border border-secondary-300 hover:bg-surface transition-smooth">2</button>
+                        <button class="px-4 py-2 rounded-lg border border-secondary-300 hover:bg-surface transition-smooth">3</button>
+                        <button class="px-4 py-2 rounded-lg border border-secondary-300 hover:bg-surface transition-smooth">4</button>
+                        <span class="px-2 text-text-secondary">...</span>
+                        <button class="px-4 py-2 rounded-lg border border-secondary-300 hover:bg-surface transition-smooth">8</button>
+                        <button class="p-2 rounded-lg border border-secondary-300 hover:bg-surface transition-smooth">
+                            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1adc0e339-1764638044034.png" alt="Next page icon" class="w-5 h-5">
+                        </button>
+                    </div>
+
+                    <!-- Load More Button -->
+                    <div class="text-center mt-8">
+                        <button class="btn-outline">
+                            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_138143ab4-1764765418683.png" alt="Load more icon" class="w-5 h-5 mr-2">
+                            Load More Results
+                        </button>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Tool CTA -->
+    <section class="section bg-surface">
+        <div class="container-custom">
+            <div class="card p-8 md:p-12 text-center">
+                <div class="w-16 h-16 mx-auto mb-6 bg-primary-50 rounded-full flex items-center justify-center">
+                    <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1091c14c0-1764659816757.png" alt="Compare tools icon" class="w-8 h-8">
+                </div>
+                <h2 class="text-3xl font-bold text-text-primary mb-4">Compare Your Selections</h2>
+                <p class="text-xl text-text-secondary mb-8 max-w-2xl mx-auto">Added tools to compare? View side-by-side specifications, ratings, and prices to make the best decision.</p>
+                <button class="btn-primary text-lg">
+                    <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1f5242011-1764656740211.png" alt="Compare icon" class="w-6 h-6 mr-2">
+                    Compare Selected Tools (0)
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-secondary-900 text-secondary-300">
+        <div class="container-custom py-12">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <!-- Brand Column -->
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <svg class="w-10 h-10" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="40" height="40" rx="8" fill="#2563EB"/>
+                            <path d="M12 20L18 14L24 20L30 14" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M18 14V28M24 20V28" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                            <circle cx="18" cy="14" r="2" fill="#F97316"/>
+                            <circle cx="24" cy="20" r="2" fill="#F97316"/>
+                        </svg>
+                        <div>
+                            <h3 class="text-lg font-bold text-white">PowerTool Pro Hub</h3>
+                            <p class="text-xs text-secondary-400">Expert Tool Reviews</p>
+                        </div>
+                    </div>
+                    <p class="text-sm mb-4">Your trusted source for honest power tool reviews and recommendations. Make informed decisions with expert testing.</p>
+                    <div class="flex items-center space-x-4">
+                        <a href="javascript:void(0)" class="w-10 h-10 bg-secondary-800 rounded-full flex items-center justify-center hover:bg-primary transition-smooth">
+                            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1f28b7127-1764873748358.png" alt="YouTube social icon" class="w-5 h-5">
+                        </a>
+                        <a href="javascript:void(0)" class="w-10 h-10 bg-secondary-800 rounded-full flex items-center justify-center hover:bg-primary transition-smooth">
+                            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_11507f194-1764656739730.png" alt="Facebook social icon" class="w-5 h-5">
+                        </a>
+                        <a href="javascript:void(0)" class="w-10 h-10 bg-secondary-800 rounded-full flex items-center justify-center hover:bg-primary transition-smooth">
+                            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1f9c7aecf-1764660938700.png" alt="Instagram social icon" class="w-5 h-5">
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="homepage.html" class="hover:text-white transition-smooth">Home</a></li>
+                        <li><a href="product_categories_hub.html" class="hover:text-white transition-smooth">Categories</a></li>
+                        <li><a href="video_review_center.html" class="hover:text-white transition-smooth">Video Reviews</a></li>
+                        <li><a href="about_expertise.html" class="hover:text-white transition-smooth">About Us</a></li>
+                        <li><a href="search_results_filters.html" class="hover:text-white transition-smooth">Search Tools</a></li>
+                    </ul>
+                </div>
+
+                <!-- Categories -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Popular Categories</h4>
+                    <ul class="space-y-2">
+                        <li><a href="product_categories_hub.html" class="hover:text-white transition-smooth">Drills</a></li>
+                        <li><a href="product_categories_hub.html" class="hover:text-white transition-smooth">Saws</a></li>
+                        <li><a href="product_categories_hub.html" class="hover:text-white transition-smooth">Sanders</a></li>
+                        <li><a href="product_categories_hub.html" class="hover:text-white transition-smooth">Grinders</a></li>
+                        <li><a href="product_categories_hub.html" class="hover:text-white transition-smooth">Combo Kits</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Get In Touch</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start space-x-3">
+                            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1a768d64d-1765469675922.png" alt="Email icon" class="w-5 h-5 mt-1">
+                            <span class="text-sm">contact@powertoolprohub.com</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_173e08cba-1764653070105.png" alt="Location icon" class="w-5 h-5 mt-1">
+                            <span class="text-sm">Kuala Lumpur, Malaysia</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1ba476c03-1764657448722.png" alt="Clock icon" class="w-5 h-5 mt-1">
+                            <span class="text-sm">Mon - Fri: 9AM - 6PM MYT</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-secondary-800">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                    <p class="text-sm text-secondary-400">© 2025 PowerTool Pro Hub. All Rights Reserved.</p>
+                    <div class="flex items-center space-x-6">
+                        <a href="javascript:void(0)" class="text-sm hover:text-white transition-smooth">Privacy Policy</a>
+                        <a href="javascript:void(0)" class="text-sm hover:text-white transition-smooth">Terms of Service</a>
+                        <a href="javascript:void(0)" class="text-sm hover:text-white transition-smooth">Affiliate Disclosure</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Search suggestions toggle
+        const searchInput = document.getElementById('search-input');
+        const searchSuggestions = document.getElementById('search-suggestions');
+        
+        searchInput.addEventListener('focus', () => {
+            searchSuggestions.classList.remove('hidden');
+        });
+        
+        document.addEventListener('click', (e) => {
+            if (!searchInput.contains(e.target) && !searchSuggestions.contains(e.target)) {
+                searchSuggestions.classList.add('hidden');
+            }
+        });
+
+        // Voice search button
+        const voiceSearchBtn = document.getElementById('voice-search-btn');
+        voiceSearchBtn.addEventListener('click', () => {
+            alert('Voice search feature coming soon!');
+        });
+
+        // View toggle
+        const gridViewBtn = document.getElementById('grid-view');
+        const listViewBtn = document.getElementById('list-view');
+        const productGrid = document.getElementById('product-grid');
+        
+        listViewBtn.addEventListener('click', () => {
+            productGrid.classList.remove('grid', 'md:grid-cols-2', 'xl:grid-cols-3');
+            productGrid.classList.add('flex', 'flex-col');
+            gridViewBtn.classList.remove('bg-white', 'shadow-sm');
+            listViewBtn.classList.add('bg-white', 'shadow-sm');
+        });
+        
+        gridViewBtn.addEventListener('click', () => {
+            productGrid.classList.add('grid', 'md:grid-cols-2', 'xl:grid-cols-3');
+            productGrid.classList.remove('flex', 'flex-col');
+            listViewBtn.classList.remove('bg-white', 'shadow-sm');
+            gridViewBtn.classList.add('bg-white', 'shadow-sm');
+        });
+
+        // Reset filters
+        const resetFiltersBtn = document.getElementById('reset-filters');
+        resetFiltersBtn.addEventListener('click', () => {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(checkbox => checkbox.checked = false);
+            const radios = document.querySelectorAll('input[type="radio"]');
+            radios.forEach(radio => radio.checked = false);
+            alert('All filters have been reset!');
+        });
+    </script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>
